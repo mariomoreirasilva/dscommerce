@@ -46,7 +46,7 @@ public class Product {
 		this.name = name;
 		this.description = description;
 		this.price = price;
-		imgUrl = imgUrl;
+		this.imgUrl = imgUrl;
 	}
 
 	public Long getId() {
@@ -86,7 +86,7 @@ public class Product {
 	}
 
 	public void setImgUrl(String imgUrl) {
-		imgUrl = imgUrl;
+		this.imgUrl = imgUrl;
 	}
 
 	public Set<Category> getCategories() {
