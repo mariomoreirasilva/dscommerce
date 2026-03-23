@@ -2,21 +2,27 @@ package com.devsuperior.descommerce.dto;
 
 import com.devsuperior.descommerce.entities.Product;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public class ProductDTO {
 	
 	private Long id;
+	@Size(min = 3, max = 80, message = "Nome precisar ter entre 3 e 80 caracteres.")
+	@NotBlank(message = "Campo requerido")
 	private String name;	
+	@Size(min = 10, message = "Descrição com no mínimo 10 caracteres.")
+	@NotBlank(message = "Campo requerido")
 	private String description;
+	@Positive(message = "Preço deve ser posisitvo")
 	private Double price;
 	private String imgUrl;
 	
-	public ProductDTO() {		
+	public ProductDTO() {
+		
 	}
-
+	
 	public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {		
 		this.id = id;
 		this.name = name;

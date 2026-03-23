@@ -19,6 +19,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.devsuperior.descommerce.dto.ProductDTO;
 import com.devsuperior.descommerce.services.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
@@ -44,7 +46,7 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto) {			
+	public ResponseEntity<ProductDTO> insert(@Valid @RequestBody ProductDTO dto) {			
 		
 		dto = service.insert(dto);
 		//boa prática. Além do codigo 201 no cabeçãrio terá o link para o recurso criado
@@ -56,7 +58,7 @@ public class ProductController {
 	}
 	
 	@PutMapping(value = "/{id}")	
-	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {		
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {		
 		
 		dto = service.update(id, dto);
 		return ResponseEntity.ok(dto);
